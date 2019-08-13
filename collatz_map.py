@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import sys
 
 def collatz_mapper(amax, bmax, div=2, nlim=20):
@@ -26,6 +27,11 @@ def collatz_mapper(amax, bmax, div=2, nlim=20):
                     n_min = min(n_min, n_curr)
                     if n_curr%d == 0:
                         n_curr = n_curr // d
+                        #if n_curr == 0:
+                        #    n_min = 0
+                        #    break
+                        #else:
+                        #    n_curr = n_curr // d
                     else:
                         n_curr = a*n_curr + b
                     step += 1
@@ -42,17 +48,30 @@ def collatz_mapper(amax, bmax, div=2, nlim=20):
             #print('min_fix_setlist=',min_fix_setlist)
             if np.pi in min_fix_setlist:
                 if [np.pi]==min_fix_setlist:
-                    collatz_map[b + abs(b_range[0]), a + abs(a_range[0])] = 0
+                    collatz_map[b + bmax, a + amax] = 0
                 else:
-                    collatz_map[b + abs(b_range[0]), a + abs(a_range[0])] = 1
+                    collatz_map[b + bmax, a + amax] = 1
             else:
                 if len(min_fix_setlist) == 1:
-                    collatz_map[b + abs(b_range[0]), a + abs(a_range[0])] = 3
+                    collatz_map[b + bmax, a + amax] = 3
                 else:
-                    collatz_map[b + abs(b_range[0]), a + abs(a_range[0])] = 2
+                    collatz_map[b + bmax, a + amax] = 2
     #
     return collatz_map
-
+#
+def plot_map(col_map, div):
+    plt.figure(div)
+    plt.clf()
+    values = np.unique(col_map)
+    image = plt.imshow(col_map, cmap='inferno')
+    colors = [image.cmap(image.norm(value)) for value in values]
+    labels = ['no convergence', 'convergence for some', 'convergence for all at diff', 'convergence for all at same']
+    patches = [mpatches.Patch(color=colors[i], label=labels[i]) for i in range(len(values))]
+    plt.legend(handles=patches, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    plt.title('divisor = '+str(div))
+    plt.axis('off')
+    plt.show()
+#
 
 
 if __name__ == '__main__':
@@ -63,10 +82,15 @@ if __name__ == '__main__':
         amax, bmax, div, nlim = int_parameters[:4]
     else:
         amax, bmax, div, nlim = eval(input('enter all ints with commas: amax, bmax, div, nlim\n'))
-
+    #amax, bmax, div, nlim = 1024, 1024, 2, 20
+    print('parameters: amax=', amax, ', bmax=',bmax, ', div=',div, ', nlim=',nlim)
     collatz_map = collatz_mapper(amax, bmax, div, nlim)
-    plt.figure(div)
-    plt.clf()
-    plt.imshow(collatz_map, cmap='inferno')
-    plt.title('divisor = '+str(div))
-    plt.show()
+    #Save collatz map to file
+    filename = 'collatz_map_a'+str(amax)+'_b'+str(bmax)+'_div'+str(div)+'.colmap'
+    with open(filename, 'w') as file:
+        for row in range(2*amax):
+            for column in range(2*bmax):
+                file.write(str(collatz_map[row,column])+'\t')
+            file.write('\n')
+    #
+    plot_map(collatz_map, div)
