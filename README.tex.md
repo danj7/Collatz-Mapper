@@ -27,15 +27,18 @@ Since it is impossible to figure out whether or not a given set of numbers $(a, 
 
 For example, for $d=2$ and for $a$ and $b$ values ranging from -2 to 2, the map would be something like this:
 
-| ... | **a0**        | **a1**           | ...  |
-| ----- | :-------------: |:-------------:| :-----:|
-| **b0** | (-2,-2)      | (-2,-1) | ... |
-| **b1** | (-1,-2)      | (-1,-1)      |  ... |
-| ... | ... | ...      |   ... |
+|   \    | **a0**   | **a1** |  ... |
+| -----  | :-----: |:-------:|:----:|
+| **b0** | (-2,-2) | (-2,-1) |  ... |
+| **b1** | (-1,-2) | (-1,-1) |  ... |
+|   ...  |   ...   |   ...   |  ... |
 
+Each for each pair in the map a code is recorded which indicates the type of convergence:
+* 0 if no convergence for any $n$
+* 1 if convergence for some $n$ but not others
+* 2 if convergence for all $n$ but at different values
+* 3 if convergence for all $n$ at same value
 
-Testing convergence for 100 first integers.
-* 0 if no convergence
-* 1 if convergence for some values
-* 2 if convergence for all but at different values
-* 3 if convergence for all at same value
+The results are something like this:
+[Div=2]
+( "Collatz Map for Div=2")
