@@ -16,13 +16,26 @@ Since it is impossible to figure out whether or not a given set of numbers $(a, 
 * The $d$ value is fixed
 * A pair $(a, b)$ is chosen
 * For each $n$, from $n=1$ up to $n=20$:
-..* Perform the _Collatz_ rules for 200 steps
-..* Use the current $n$ value as $n_{min}+n_{init}$, where $n_{init}$ is an initialization value.
-..* Perform the _Collatz_ rules again and while $n \nequal n_{min}$:
-....* If at some step $n = n_{min}$, a loop has been found $\Rightarrow$ Convergence
-....* If 100 steps are exceded $\Rightarrow$ No convergence
-....* If $n$ is greater than a threshold value $\Rightarrow$ No convergence
-....* If $n < n_{min}$, then $n_{min} \leftarrow n$
+  * Perform the _Collatz_ rules for 200 steps
+  * Use the current $n$ value as $n_{min}+n_{init}$, where $n_{init}$ is an initialization value.
+  * Perform the _Collatz_ rules again and while $n \nequal n_{min}$:
+    * If at some step $n = n_{min}$, a loop has been found $\Rightarrow$ Convergence
+    * If 100 steps are exceded $\Rightarrow$ No convergence
+    * If $n$ is greater than a threshold value $\Rightarrow$ No convergence
+    * If $n < n_{min}$, then $n_{min} \leftarrow n$ and continue
 
 
-Then, I take a list of n values, from 1 to 20, and noting for how many of them there is a convergence for each pair $(a, b)$. If the rules return a value bigger than a certain threshold or if a certain number of steps are exceded, it is taken to mean there is no convergence for that triple $(a, b, n)$
+For example, for $d=2$ and for $a$ and $b$ values ranging from -2 to 2, the map would be something like this:
+
+| ... | **a0**        | **a1**           | ...  |
+| ----- | :-------------: |:-------------:| :-----:|
+| **b0** | (-2,-2)      | (-2,-1) | ... |
+| **b1** | (-1,-2)      | (-1,-1)      |  ... |
+| ... | ... | ...      |   ... |
+
+
+Testing convergence for 100 first integers.
+* 0 if no convergence
+* 1 if convergence for some values
+* 2 if convergence for all but at different values
+* 3 if convergence for all at same value
