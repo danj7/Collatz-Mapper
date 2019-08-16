@@ -40,5 +40,14 @@ Each for each pair in the map a code is recorded which indicates the type of con
 * 3 if convergence for all <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/> at same value
 
 The results are something like this:
-[Div=2]
-( "Collatz Map for Div=2")
+![collatz Map 32x32](https://user-images.githubusercontent.com/13749006/63194636-8269fc00-c03e-11e9-9b33-f4b9088224b0.png "Pretty pretty picture #1")
+
+
+## Usage
+You can use the Jupyter Notebook to look at the functions included in `collatz.py`. Also, through the terminal one can use the Python script or compile the C file to generate maps. In the case of the Python script one passes the maximum positive value for a and b (from the example below, the values go from -512 to 512), the divisor, and the maximum <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/> to check for convergence:
+```
+<img src="/tex/9c19795e4ae2d1230f4e240472a829dd.svg?invert_in_darkmode&sanitize=true" align=middle width=700.2745398pt height=164.20092150000002pt/> gcc collatz.c -lm
+$ ./a.out > collatz_map.colmap
+```
+This is a lot better for generating big maps like this one, which took about 3 minutes:
+![Collatz Map 1024x1024](https://user-images.githubusercontent.com/13749006/63195899-dd512280-c041-11e9-81fb-e37dd01c9ab6.png "Pretty pretty picture #2")
