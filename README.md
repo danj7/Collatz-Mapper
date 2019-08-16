@@ -27,15 +27,18 @@ Since it is impossible to figure out whether or not a given set of numbers <img 
 
 For example, for <img src="/tex/e675da7c7f7c3d89bc6087aab1186a27.svg?invert_in_darkmode&sanitize=true" align=middle width=38.69280359999998pt height=22.831056599999986pt/> and for <img src="/tex/44bc9d542a92714cac84e01cbbb7fd61.svg?invert_in_darkmode&sanitize=true" align=middle width=8.68915409999999pt height=14.15524440000002pt/> and <img src="/tex/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode&sanitize=true" align=middle width=7.054796099999991pt height=22.831056599999986pt/> values ranging from -2 to 2, the map would be something like this:
 
-| ... | **a0**        | **a1**           | ...  |
-| ----- | :-------------: |:-------------:| :-----:|
-| **b0** | (-2,-2)      | (-2,-1) | ... |
-| **b1** | (-1,-2)      | (-1,-1)      |  ... |
-| ... | ... | ...      |   ... |
+|   \    | **a0**   | **a1** |  ... |
+| -----  | :-----: |:-------:|:----:|
+| **b0** | (-2,-2) | (-2,-1) |  ... |
+| **b1** | (-1,-2) | (-1,-1) |  ... |
+|   ...  |   ...   |   ...   |  ... |
 
+Each for each pair in the map a code is recorded which indicates the type of convergence:
+* 0 if no convergence for any <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/>
+* 1 if convergence for some <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/> but not others
+* 2 if convergence for all <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/> but at different values
+* 3 if convergence for all <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/> at same value
 
-Testing convergence for 100 first integers.
-* 0 if no convergence
-* 1 if convergence for some values
-* 2 if convergence for all but at different values
-* 3 if convergence for all at same value
+The results are something like this:
+[Div=2]
+( "Collatz Map for Div=2")
