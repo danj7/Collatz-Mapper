@@ -16,13 +16,26 @@ Since it is impossible to figure out whether or not a given set of numbers <img 
 * The <img src="/tex/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode&sanitize=true" align=middle width=8.55596444999999pt height=22.831056599999986pt/> value is fixed
 * A pair <img src="/tex/ba933e77b90dc996befbe81f77f43887.svg?invert_in_darkmode&sanitize=true" align=middle width=35.83526759999999pt height=24.65753399999998pt/> is chosen
 * For each <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/>, from <img src="/tex/3d2be9e2108301e9097fa4bc51046641.svg?invert_in_darkmode&sanitize=true" align=middle width=40.00371704999999pt height=21.18721440000001pt/> up to <img src="/tex/7adb89ee6106df767245caf173b44ebd.svg?invert_in_darkmode&sanitize=true" align=middle width=48.222926399999984pt height=21.18721440000001pt/>:
-..* Perform the _Collatz_ rules for 200 steps
-..* Use the current <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/> value as <img src="/tex/05dc7ff297651ac0e4353b2b8137d704.svg?invert_in_darkmode&sanitize=true" align=middle width=87.48222119999998pt height=19.1781018pt/>, where <img src="/tex/375c472ede34fd86611aaaeafaad3f08.svg?invert_in_darkmode&sanitize=true" align=middle width=32.26048979999999pt height=14.15524440000002pt/> is an initialization value.
-..* Perform the _Collatz_ rules again and while <img src="/tex/c5b9dbd3d9a36953925b7148a1b48e6a.svg?invert_in_darkmode&sanitize=true" align=middle width=44.17552589999999pt height=14.15524440000002pt/>:
-....* If at some step <img src="/tex/0d8059444eec482e4b4e74e4a38edfd2.svg?invert_in_darkmode&sanitize=true" align=middle width=66.09315569999998pt height=14.15524440000002pt/>, a loop has been found <img src="/tex/777d001ea1ec5971b67bb546ed760f97.svg?invert_in_darkmode&sanitize=true" align=middle width=16.43840384999999pt height=14.15524440000002pt/> Convergence
-....* If 100 steps are exceded <img src="/tex/777d001ea1ec5971b67bb546ed760f97.svg?invert_in_darkmode&sanitize=true" align=middle width=16.43840384999999pt height=14.15524440000002pt/> No convergence
-....* If <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/> is greater than a threshold value <img src="/tex/777d001ea1ec5971b67bb546ed760f97.svg?invert_in_darkmode&sanitize=true" align=middle width=16.43840384999999pt height=14.15524440000002pt/> No convergence
-....* If <img src="/tex/4d7660620717da4131de8e4fae6d0734.svg?invert_in_darkmode&sanitize=true" align=middle width=66.09315569999998pt height=17.723762100000005pt/>, then <img src="/tex/8614723e3aaf45c413e89c7a15690d50.svg?invert_in_darkmode&sanitize=true" align=middle width=70.56801674999998pt height=14.15524440000002pt/>
+  * Perform the _Collatz_ rules for 200 steps
+  * Use the current <img src="/tex/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode&sanitize=true" align=middle width=9.86687624999999pt height=14.15524440000002pt/> value as <img src="/tex/05dc7ff297651ac0e4353b2b8137d704.svg?invert_in_darkmode&sanitize=true" align=middle width=87.48222119999998pt height=19.1781018pt/>, where <img src="/tex/375c472ede34fd86611aaaeafaad3f08.svg?invert_in_darkmode&sanitize=true" align=middle width=32.26048979999999pt height=14.15524440000002pt/> is an initialization value.
+  * Perform the _Collatz_ rules again and while <img src="/tex/c5b9dbd3d9a36953925b7148a1b48e6a.svg?invert_in_darkmode&sanitize=true" align=middle width=44.17552589999999pt height=14.15524440000002pt/>:
+    * If at some step $n = n_{min}$, a loop has been found $\Rightarrow$ Convergence
+    * If 100 steps are exceded $\Rightarrow$ No convergence
+    * If $n$ is greater than a threshold value $\Rightarrow$ No convergence
+    * If $n < n_{min}$, then $n_{min} \leftarrow n$ and continue
 
 
-Then, I take a list of n values, from 1 to 20, and noting for how many of them there is a convergence for each pair <img src="/tex/ba933e77b90dc996befbe81f77f43887.svg?invert_in_darkmode&sanitize=true" align=middle width=35.83526759999999pt height=24.65753399999998pt/>. If the rules return a value bigger than a certain threshold or if a certain number of steps are exceded, it is taken to mean there is no convergence for that triple <img src="/tex/a6b32991a1df8b0d17a0626e22fef3a2.svg?invert_in_darkmode&sanitize=true" align=middle width=53.00802704999999pt height=24.65753399999998pt/>
+For example, for <img src="/tex/e675da7c7f7c3d89bc6087aab1186a27.svg?invert_in_darkmode&sanitize=true" align=middle width=38.69280359999998pt height=22.831056599999986pt/> and for <img src="/tex/44bc9d542a92714cac84e01cbbb7fd61.svg?invert_in_darkmode&sanitize=true" align=middle width=8.68915409999999pt height=14.15524440000002pt/> and <img src="/tex/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode&sanitize=true" align=middle width=7.054796099999991pt height=22.831056599999986pt/> values ranging from -2 to 2, the map would be something like this:
+
+| ... | **a0**        | **a1**           | ...  |
+| ----- | :-------------: |:-------------:| :-----:|
+| **b0** | (-2,-2)      | (-2,-1) | ... |
+| **b1** | (-1,-2)      | (-1,-1)      |  ... |
+| ... | ... | ...      |   ... |
+
+
+Testing convergence for 100 first integers.
+* 0 if no convergence
+* 1 if convergence for some values
+* 2 if convergence for all but at different values
+* 3 if convergence for all at same value
