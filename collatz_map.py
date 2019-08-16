@@ -3,7 +3,23 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import sys
 
-def collatz_mapper(amax, bmax, div=2, nlim=20):
+def collatz_mapper_ints(amax, bmax, div=2, nlim=20):
+    """
+    Returns a Numpy array with the Collatz Map. Utilizes ints to build the map.
+
+    Parameters
+    ----------
+    amax: int
+        Maximum positive 'a' value of the map (horizontal axis). The map goes
+        from -amax to amax.
+    bmax: int
+        Maximum positive 'b' value of the map (vertical axis). The map goes
+        from -bmax to bmax.
+    div: int
+        Divisor for the generalized Collatz Problem.
+    nlim: int
+        Maximimum number of integers to search for convergence.
+    """
     a_range = range(-amax, amax)
     b_range = range(-bmax,bmax)
     d = div
@@ -26,12 +42,11 @@ def collatz_mapper(amax, bmax, div=2, nlim=20):
                     #print('step:',step,'n_min:', n_min, 'n_curr:', n_curr)
                     n_min = min(n_min, n_curr)
                     if n_curr%d == 0:
-                        n_curr = n_curr // d
-                        #if n_curr == 0:
-                        #    n_min = 0
-                        #    break
-                        #else:
-                        #    n_curr = n_curr // d
+                        if n_curr == 0:
+                           n_min = 0
+                           break
+                        else:
+                           n_curr = n_curr // d
                     else:
                         n_curr = a*n_curr + b
                     step += 1
@@ -59,11 +74,32 @@ def collatz_mapper(amax, bmax, div=2, nlim=20):
     #
     return collatz_map
 #
-def plot_map(col_map, div):
-    plt.figure(div)
-    plt.clf()
+def collatz_plotter(col_map, div = 0, save_fig=False, savename='', cmap='inferno'):
+    """
+    Plots the collatz map.
+
+    Parameters
+    ----------
+    colmap: numpy array
+        Contains the map.
+    div: int
+        Used as figure number and for filename if empty.
+    save_fig: boolean
+        Declares whether to save the figure or not.
+    savename: string
+        Name of the file where figure will be saved.
+    cmap: string or colormap
+        Set by default to 'inferno'.
+    """
+    if div==0:
+        fig = plt.figure()
+        div = ''
+    else:
+        fig = plt.figure(div)
+        div = '_div'+str(div)
+    ax=fig.add_subplot(1,1,1)
     values = np.unique(col_map)
-    image = plt.imshow(col_map, cmap='inferno')
+    image = plt.imshow(col_map, cmap=cmap)
     colors = [image.cmap(image.norm(value)) for value in values]
     labels = ['no convergence', 'convergence for some', 'convergence for all at diff', 'convergence for all at same']
     patches = [mpatches.Patch(color=colors[i], label=labels[i]) for i in range(len(values))]
@@ -71,6 +107,11 @@ def plot_map(col_map, div):
     plt.title('divisor = '+str(div))
     plt.axis('off')
     plt.show()
+    if save_fig:
+        extent = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
+        if savename=='':
+            savename = 'collatz_map_a'+str(col_map.shape[0])+'_b'+str(col_map.shape[1])+div+'.png'
+        plt.savefig(savename, bbox_inches=extent)
 #
 
 
