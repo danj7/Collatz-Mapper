@@ -1,6 +1,8 @@
 # Collatz-Mapper
 Code to create a visual representation of convergence in the generalized [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture "Collatz Conjecture").
 
+> Update: new version with more numpy goodness is available in the notebook "CollatzMapperPresentation". Soon it will be put in its own `.py` file.
+
 ## About
 The idea is to make a particular visual representation of the [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture "Collatz Conjecture") where a generalized version of the conjecture is considered: <img src="/tex/353804572cedf345ba803e6221c03610.svg?invert_in_darkmode&sanitize=true" align=middle width=45.70201844999999pt height=22.831056599999986pt/> and divisor <img src="/tex/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode&sanitize=true" align=middle width=8.55596444999999pt height=22.831056599999986pt/>.
 
