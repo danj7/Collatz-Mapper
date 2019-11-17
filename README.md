@@ -1,3 +1,5 @@
+> Update: new version with more numpy goodness is available in the notebook "CollatzMapperPresentation". Soon it will be put in its own `.py` file.
+
 # Collatz-Mapper
 Code to create a visual representation of convergence in the generalized [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture "Collatz Conjecture").
 

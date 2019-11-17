@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import matplotlib.animation as anim
 import sys
 
 def collatz_mapper(amax, bmax, div=2, nlim=20):
@@ -121,8 +122,12 @@ def collatz_plotter(col_map, div = 0, cmap='inferno', legend=True):
     plt.axis('off')
     plt.show()
 #
-
-
+def collatz_animation(amax, bmax, div):
+    """
+    Returns an animation object and saves it as Gif.
+    """
+    pass
+#
 if __name__ == '__main__':
     int_parameters = []
     for arg in sys.argv[1:]:
